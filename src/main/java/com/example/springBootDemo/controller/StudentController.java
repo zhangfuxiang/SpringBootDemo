@@ -2,6 +2,9 @@ package com.example.springBootDemo.controller;
 
 import com.example.springBootDemo.entity.Student;
 import com.example.springBootDemo.service.StudentService;
+import com.example.springBootDemo.service.impl.StudentImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping(value = "/user")
 public class StudentController {
 
+    private final static Logger logger=LoggerFactory.getLogger(StudentController.class);
+
     @Autowired
     private StudentService studentService;
 
@@ -28,6 +33,7 @@ public class StudentController {
     public Student showStudentInfo(HttpServletRequest request, Model model){
         int userId = Integer.parseInt(request.getParameter("id"));
         Student student = this.studentService.getStudentById(userId);
+        logger.info(student.toString());
         return student;
 /*        User user=new User();
         user.setName("test");
