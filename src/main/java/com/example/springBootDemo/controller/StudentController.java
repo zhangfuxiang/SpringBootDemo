@@ -1,9 +1,7 @@
 package com.example.springBootDemo.controller;
 
 import com.example.springBootDemo.entity.Student;
-import com.example.springBootDemo.entity.User;
 import com.example.springBootDemo.service.StudentService;
-import com.example.springBootDemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,24 +17,11 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping(value = "/user")
-public class UserController {
-
-    @Autowired
-    private UserService userService;
+public class StudentController {
 
     @Autowired
     private StudentService studentService;
 
-    @RequestMapping(value = "/showUser")
-    @ResponseBody
-    public User toIndex(HttpServletRequest request, Model model){
-        int userId = Integer.parseInt(request.getParameter("id"));
-        User user = this.userService.getUserById(userId);
-        return user;
-/*        User user=new User();
-        user.setName("test");
-        return user;*/
-    }
 
     @RequestMapping(value = "/showStudent")
     @ResponseBody
