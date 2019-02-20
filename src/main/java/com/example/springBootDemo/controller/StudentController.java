@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping(value = "/user")
 public class StudentController {
 
+    
     private final static Logger logger=LoggerFactory.getLogger(StudentController.class);
 
     @Autowired
