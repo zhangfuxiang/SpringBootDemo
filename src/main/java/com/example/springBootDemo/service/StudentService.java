@@ -8,6 +8,7 @@ import com.example.springBootDemo.entity.Student;
  * @Description:
  */
 public interface StudentService {
+
     int addStudent(Student student);
 
     Student getStudentById(int Id);
