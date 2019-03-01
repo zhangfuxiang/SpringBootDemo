@@ -6,10 +6,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 /**
  * @Auther: zhangfx
@@ -17,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Description:
  */
 @Controller
+@Validated
 @RequestMapping(value = "/user")
 @Slf4j
 public class StudentController {
@@ -38,14 +43,14 @@ public class StudentController {
         return user;*/
     }
 
-    @RequestMapping(value = "/insertStudent")
+    @PostMapping(value = "/insertStudent")
     @ResponseBody
-    public int insertStudent(HttpServletRequest request,Model model){
-        Student student=new Student();
+    public int insertStudent(HttpServletRequest request,Model model,@Valid @RequestBody Student student){
+/*        Student student=new Student();
         student.setId(5);
         student.setAge("66");
         student.setName("小明");
-        student.setGrade("88");
+        student.setGrade("88");*/
         int result=this.studentService.addStudent(student);
         return result;
     }

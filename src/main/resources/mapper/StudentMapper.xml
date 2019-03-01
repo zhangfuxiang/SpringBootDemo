@@ -10,21 +10,20 @@
   <sql id="Base_Column_List" >
     id, name, age, grade
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" >
     select 
     <include refid="Base_Column_List" />
-    from student
+    from ${tablename}
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from student
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.springBootDemo.entity.Student" >
-    insert into student (id, name, age, 
-      grade)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}, 
-      #{grade,jdbcType=VARCHAR})
+  <insert id="insert" >
+    insert into ${tablename} (id, name, age,grade)
+    values (#{student.id,jdbcType=INTEGER}, #{student.name,jdbcType=VARCHAR}, #{student.age,jdbcType=VARCHAR},
+      #{student.grade,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.springBootDemo.entity.Student" >
     insert into student
