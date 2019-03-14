@@ -3,6 +3,8 @@ package com.example.springBootDemo.dao;
 import com.example.springBootDemo.entity.Student;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface StudentMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -11,6 +13,8 @@ public interface StudentMapper {
     int insertSelective(Student record);
 
     Student selectByPrimaryKey(@Param("id")Integer id,@Param("tablename") String tablename);
+
+    List<Student> queryAllstudent(@Param("tablename") String tablename);
 
     int updateByPrimaryKeySelective(Student record);
 

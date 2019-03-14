@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * @Auther: zhangfx
@@ -38,6 +39,19 @@ public class StudentController {
         Student student = this.studentService.getStudentById(userId);
         log.info(student.toString());
         return student;
+/*        User user=new User();
+        user.setName("test");
+        return user;*/
+    }
+
+    @RequestMapping(value = "/showAllStudent")
+    @ResponseBody
+    public List<Student> showAllStudentInfo(HttpServletRequest request, Model model){
+        int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+        int pageSize = Integer.parseInt(request.getParameter("pageSize"));
+        List<Student> students = this.studentService.getAllStudent(pageNum,pageSize);
+        log.info(students.toString());
+        return students;
 /*        User user=new User();
         user.setName("test");
         return user;*/

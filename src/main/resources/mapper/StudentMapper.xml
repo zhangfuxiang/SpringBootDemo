@@ -16,6 +16,11 @@
     from ${tablename}
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="queryAllstudent" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from ${tablename}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from student
     where id = #{id,jdbcType=INTEGER}
